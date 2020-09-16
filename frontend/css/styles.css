@@ -1,0 +1,83 @@
+.app {
+    font-family: sans-serif;
+}
+
+.us_container{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin-top: 3rem;
+}
+
+.us_item{
+    flex-grow: 0;
+}
+
+.us_form{
+    display: flex;
+    flex-direction: column;
+    padding: .5rem;
+}
+
+.us_form_item{
+    margin-bottom: 1rem;
+}
+
+label.us_form_item{
+    display: flex;
+    justify-content: center;
+}
+
+.us_form_item input {
+    margin-left: 1rem;
+    flex-grow: 1;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.us_form_item input:hover{
+    border-bottom-color: #27ca27;
+}
+
+.btn_enviar{
+    background-color: crimson;
+    color: aliceblue;
+    width: 100%;
+    max-width: 200px;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: .5rem 0;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.btn_enviar:hover{
+    background-color: #970c28;
+}
+
+
+.us_response {
+    display: flex;
+    flex-direction: column;
+    
+}
+.us_response_item {
+    margin-bottom: .5rem;
+    font-weight: 900;
+}
+
+.us_response_item span{
+    font-weight: 400;
+    color: rgb(8, 109, 204);
+}
+
+
+
+

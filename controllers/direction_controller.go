@@ -16,15 +16,16 @@ import (
 func CreateShortURL(w http.ResponseWriter, r *http.Request) {
 
 	dir := models.Direction{}
-	err := dir.FromJSON(r.Body)
 
-	dir.ShortURL = randStringRunes(6)
-	dir.CreateAt = time.Now()
-	dir.UpdateAt = time.Now()
+	err := dir.FromJSON(r.Body)
 
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 	}
+
+	dir.ShortURL = randStringRunes(6)
+	dir.CreateAt = time.Now()
+	dir.UpdateAt = time.Now()
 
 	db := data.GetConnection()
 	defer db.Close()
@@ -35,6 +36,7 @@ func CreateShortURL(w http.ResponseWriter, r *http.Request) {
 	}
 
 	res := &responseURL{dir.URL, dir.ShortURL}
+	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(res)
 
 	defer insert.Close()
