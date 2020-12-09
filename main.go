@@ -16,9 +16,7 @@ func main() {
 	config.Load()
 
 	router := mux.NewRouter().StrictSlash(true)
-	frontendRouter := mux.NewRouter().StrictSlash(true)
 
-	frontendRouter.PathPrefix("/").Handler(http.FileServer(http.Dir("./frontend/")))
 	router.HandleFunc("/api", controllers.CreateShortURL).Methods("POST")
 	router.HandleFunc("/{url}", controllers.GetURL).Methods("GET")
 
@@ -36,7 +34,6 @@ func main() {
 
 		AllowedHeaders: []string{
 			"*", //or you can your header key values which you are using in your application
-
 		},
 	})
 
@@ -48,15 +45,6 @@ func main() {
 		IdleTimeout:  120 * time.Second,
 	}
 
-	serverFrontend := http.Server{
-		Addr:         ":8080",
-		Handler:      frontendRouter,
-		ReadTimeout:  5 * time.Second,
-		WriteTimeout: 10 * time.Second,
-		IdleTimeout:  120 * time.Second,
-	}
-
-	go server.ListenAndServe()
-	serverFrontend.ListenAndServe()
+	server.ListenAndServe()
 
 }

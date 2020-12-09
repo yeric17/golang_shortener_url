@@ -15,6 +15,8 @@ var (
 	DBNAME   = ""
 	DBUSER   = ""
 	DBURL    = ""
+	DBPORT   = ""
+	DBHOST   = ""
 )
 
 func Load() {
@@ -33,4 +35,6 @@ func Load() {
 	DBUSER = os.Getenv("DB_USER")
 	DBPASS = os.Getenv("DB_PASS")
 	DBNAME = os.Getenv("DB_NAME")
+	DBPORT = os.Getenv("DB_PORT")
+	DBHOST = os.Getenv("DB_HOST")
 }

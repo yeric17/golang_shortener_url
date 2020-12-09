@@ -1,0 +1,30 @@
+version: '3'
+services:
+    db:
+        container_name: url_shortener
+        image: 'mysql:5.7'
+        environment: 
+            - MYSQL_DATABASE=url_shortener
+            - MYSQL_ROOT_PASSWORD=eBugV2EzKJ
+            - MYSQL_USER=mysql
+            - MYSQL_PASSWORD=wUuZph7CH2
+            - DATABASE_HOST=db
+        ports:
+            - "3307:3306"
+        volumes:
+            - ./sql:docker-entrypoint-initdb.d
+    api:
+        build: .
+        restart: on-failure
+        depends_on:
+            - db
+        links: 
+            - db
+        environment:
+            - DB_HOST=DB
+            - DB_PORT=3306
+            - DB_NAME=hardwarestore
+            - DB_USER=root
+            - DB_PASS=wUuZph7CH2
+        ports:
+            - 9090:9090

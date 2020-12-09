@@ -16,7 +16,7 @@ import (
 func CreateShortURL(w http.ResponseWriter, r *http.Request) {
 
 	dir := models.Direction{}
-
+	
 	err := dir.FromJSON(r.Body)
 
 	if err != nil {
